@@ -1,0 +1,6 @@
+{
+  "name": "Openhab 2 widget for Übersicht",
+  "description": "This widget displays a summary of preconfigurated items of your Openhab 2 installation on your Desktop.",
+  "author": "erikr729",
+  "email": "erikr729@outlook.de"
+}
