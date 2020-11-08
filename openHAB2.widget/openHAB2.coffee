@@ -1,87 +1,30 @@
-################################################# openHAB 2 Widget for Übersicht #################################################################
+################################################# openHAB 2 Widget for 'Übersicht' #################################################################
 
-# This widget allows you to have a 
+# This is a small widget für 'Übersicht' where you can have an overview of your openHAB 2 items on your desktop.
 #
 #Options:
-# 1) add your local openHAB 2 ip here:
-openHAB_IP = ""
-# 2) do you have remote access (true/false) (more information here: https://www.openHAB.org/docs/installation/security.html)?
-#    This feature is only recommended when needed because of performance reasons.
-remote_access = false
-#   1. add your domain here (without http/s or www):
-remote_ip = ""
-#   2. is https enabled? (true/false)
-https = true
-#   3. is authentication enabled? (true/false)
-authentication = true
-#   4. add your username and password here:
+# 1) Connection to your openHAB2 installation
+#   1. add your openHAB 2 ip here:
+#      local access: ip adress + port (e.g. 192.0.0.1:8080)
+#      remote access: domain (optional: + port) (e.g. mydomain.com) 
+openHAB2_IP = ""
+#   2. is https enabled? yes -> https, no -> http 
+http_s = "http"              # defaut: http
+#   3. optional: if authentication is enabled, add your username and password here:
 username = ""
 password = ""
 
-
-# 4) add your items here:
-
+# 2) add your items here:
 items = [
-  name: "Schlafzimmer"
-  type: "Room"
-,
-  name: "Therm_TemperaturSchlafzimmer_Num"
-  type: "Temperature"
-,
-  name: "Therm_LuftfeuchtigkeitSchlafzimmer_Num"
-  type: "Humidity"
-,
-  name: "Heizung_Schlafzimmer"
-  type: "Heating"
-,
-  name: "Lampe_Wohnzimmer"
-  type: "Light"
-,
-  name: "Stripe_TV"
-  type: "Led-Strip"
-,
-  name: "Stripe_Bett"
-  type: "Led-Strip"
-,
-  name: "Wandl_Bett"
-  type: "Light"
-,
-  name: "Rollos"
-  type: "Rollershutter"
-,
-  name: "Fensterkontakt_Kontakt"
-  type: "Contact"
-,
-  name: "Bad"
-  type: "Room"
-,
-  name: "Therm_TemperaturBad_Num"
-  type: "Temperature"
-,
-  name: "Therm_LuftfeuchtigkeitBad_Num"
-  type: "Humidity"
-,
-  name: "Heizung_Bad"
-  type: "Heating"
-,
-  name: "Lampe_Bad"
-  type: "Light"
-,
-  name: "Flur"
-  type: "Room"
-,
-  name: "Lampe_Kueche"
-  type: "Light"
-,
-  name: "Lampe_Flur"
-  type: "Light"
+
 ]
+
 # Syntax:
 #items = [                        //important!                       
-#     name: "roomname"            //all items are assigned to this room up to the next room. Every room is displayed in one column
+#     name: "roomname"            //this is a room. All items are assigned to this room up to the next room. Every room is displayed in one column
 #     type: "Room"
 #,                                //important!                                    
-#     name: "itemname"
+#     name: "itemname"            //this is an item
 #     type: "type of the item"
 #,                                //important! 
 #     name: "itemname"            
@@ -96,42 +39,42 @@ items = [
 #   - Light         //type in openHAB 2: Switch, icon adapts to state
 #   - Led-Strip     //type in openHAB 2: Switch, icon adapts to state
 #   - Dimmer        //number of decimal places:
-dimmer_decimalplaces = 0
+dimmer_decimalplaces = 0          # defaut: 0
 #   - Rollershutter
 #   - Color         //icon adapts to state
 #   - DateTime
 #   - Location
 #   - Number        //number of decimal places:
-number_decimalplaces = 1
+number_decimalplaces = 1          # defaut: 1
 #   - Player
 #   - String
 #   - Temperature
 #   - Humidity
 #   - Heating       //type in openHAB 2: Switch, icon adapts to state
-#
+
 # Appearance
 #   Number of columns:
-columns = 2
-#   Width for all columns:
-width_of_column = 300
+columns = 1                       # defaut: 1
+#   Width of a column (px):
+width_of_column = 300             # defaut: 300px
 #   Icons (yes: true, no: false)
-icons = true
+icons = true                      # defaut: true
 #   Position and deeper options can be found at the beginning of the style-block
 
+command: "curl -sS -f --user '#{username}:#{password}' '#{http_s}://#{openHAB2_IP}/rest/items'"
 
-command: "curl -sS -f 'http://#{openHAB_IP}/rest/items'"
-# 3) add the prefered refresh frequency in ms here (30000ms = 30s):
-refreshFrequency: 180000
+# 3) add the prefered refresh frequency in ms here (10000ms = 10s):
+refreshFrequency: 180000          # defaut: 3 minutes
 
 
 style: """
   .openHAB2{
-    //Position
+    // 4) Position:
     left: 20px; 
     top: 20px;
 
-    //'°C' for Celsius, '°F' for Fahrenheit
-    --unit_temperature: '°C'
+    // 5) Temperature unit
+    --unit_temperature: '°C'  //'°C' for Celsius, '°F' for Fahrenheit
 
     //Appearance
     --main-text-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, 'Open Sans', sans-serif;    //text family
@@ -142,7 +85,6 @@ style: """
     --main-border-color: grey;          //border color
     --main-border-thick: none;          //border thickness. No border: none
     --main-border-radius: 0px;          //border radius
-
     
     color: var(--main-text-color);
     font-family: var(--main-text-family);
@@ -151,8 +93,8 @@ style: """
     border-radius: var(--main-border-radius);
     padding: 7px;
     background-color: var(--main-backgound-color);
-
     margin: 5px;
+
 
     #oh2-column{
       float: left;
@@ -161,9 +103,8 @@ style: """
     .oh2-row{
       height: 20px;
       padding: 2px;
-      
       margin-top: 2px;
-
+      
       #icon{
         width: 20px;
         float: left;
@@ -191,15 +132,13 @@ style: """
       }
       #Humidity span:after{
         content: "%";
-      }
-      
+      } 
     }
     #room {
       text-align: center;
       font-size: calc(var(--main-text-size) + 2px)  
     }
   }
-
 """
 
 
@@ -394,5 +333,3 @@ update: (output, dom) ->
           else
             $(dom).find('.' + data_value.name + '-icon').html('<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"></svg>')
             $(dom).find('.' + data_value.name + '-state').text(data_value.state)
-            
-
