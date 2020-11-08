@@ -68,13 +68,13 @@ refreshFrequency: 180000          # defaut: 3 minutes
 
 
 style: """
-  .openHAB2{
-    // 4) Position:
-    left: 20px; 
-    top: 20px;
+  // 4) Position:
+  left: 20px; 
+  top: 20px;
 
+  .openHAB2{
     // 5) Temperature unit
-    --unit_temperature: '°C'  //'°C' for Celsius, '°F' for Fahrenheit
+    --unit_temperature: '°C'            //'°C' for Celsius, '°F' for Fahrenheit
 
     //Appearance
     --main-text-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, 'Open Sans', sans-serif;    //text family
@@ -104,7 +104,7 @@ style: """
       height: 20px;
       padding: 2px;
       margin-top: 2px;
-      
+
       #icon{
         width: 20px;
         float: left;
