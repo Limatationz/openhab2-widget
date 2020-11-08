@@ -2,7 +2,7 @@
 This is a small widget für 'Übersicht' where you can have an overview of your openHAB 2 installation on your desktop.
 
 ## Preparation
-- Complete an [openHAB 2](https://www.openhab.org/) installation with REST API enabled
+- Complete an [openHAB 2](https://www.openhab.org/) installation
 - Download and install [Übersicht](http://tracesof.net/uebersicht/)
 
 ## Installation
@@ -17,15 +17,15 @@ By default, the widget will update the states every 3 minutes. To adjust this, c
 ### Item selection
 Add all items that should be displayed in the `items` array in `openHAB2.coffee`.
 Every item needs 2 values: 
-- **name**: the item name in openHAB 2
+- **name**: the item name in openHAB2
 - **type**: one of the supported types. I added some types for a better user experience.  
 Special type Room: All followed items till the next room are assigned to this room and will be displayed in one column (more information in the section Columns)  
 
 **Supported item types**: 
-  - Switch, 
-  - Contact, 
+  - Switch
+  - Contact
   - Light (openHAB2 type: Switch) 
-  - Led-Strip (openHAB2 type: Switch), 
+  - Led-Strip (openHAB2 type: Switch)
   - Dimmer
   - Rollershutter
   - Color
@@ -58,7 +58,6 @@ The position of the widget can be set in the `style block` in `openHAB2.coffee`.
 #### Advanced Appearance
 Several options like the text, background or icon color as well as a border can be set in the `style block` in `openHAB2.coffee` by changing the css variables. A description can be found next to the variables.
 
-##Credits
+## Credits
 This is not an official openHAB2 widget.  
-Please use the issue templates in this repository for bugs. The main openHAB project is not responsible for any malfunction that is caused by the use of the widget!  
-Special thanks goes to: [badsgahhl](https://github.com/badsgahhl)
+Please use the issue templates in this repository for bugs. The main openHAB project is not responsible for any malfunction that is caused by the use of the widget!
