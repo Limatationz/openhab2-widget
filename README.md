@@ -1,5 +1,5 @@
-# OpenHAB2 Widget for 'Übersicht'
-This is a small widget für 'Übersicht' where you can have an overview of your openHAB 2 items on your desktop.
+# OpenHAB2 Widget for Übersicht
+This is a small widget for [Übersicht](http://tracesof.net/uebersicht/) where you can have an overview of your openHAB 2 items on your desktop.
 
 ## Preparation
 - Complete an [openHAB 2](https://www.openhab.org/) installation
